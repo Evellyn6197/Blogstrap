@@ -4,4 +4,3 @@ module ArticlesHelper
             datetime.strftime("%B %e, %Y | %I:%M %p")
     end
 end
-    
