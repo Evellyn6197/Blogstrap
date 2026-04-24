@@ -2,11 +2,15 @@
     <h2 class="h1 blog-post-title"> <%= article.title %> </h2>
     <p class="blog-post-meta"><%= format_date(article.created_at) %> by <a href="#">Chris</a></p>
 
-    <p><%= article.body %></p>
+    <p><%= truncate(article.body, length: 200) %></p>
 
-    <%= link_to 'Edit', edit_article_path(article), class: "btn btn-secondary" %>
+    <p>
+        <%= link_to 'Read more...', article, class: " btn-link" %>
+    </p>
+
+    <%= link_to 'Edit', edit_article_path(article), class: "btn btn-secondary mb-3" %>
     <%= link_to 'Delete', article_path(article),
     data: { turbo_method: :delete,
     turbo_confirm: "Are you sure?" },
-    class: "btn btn-danger" %>
+    class: "btn btn-danger mb-3" %>
 </article>
