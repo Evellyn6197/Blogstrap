@@ -1,20 +1,13 @@
-<h1>
-    <%= @article.title %>
-</h1>
+<article class="blog-post">
+    <h2 class="h1 blog-post-title"> <%= @article.title %> </h2>
+    <p class="blog-post-meta"><%= format_date(@article.created_at) %> by <a href="#">Chris</a></p>
 
-<p>
-    <%= @article.body %>
-</p>
+    <p> <%= @article.body %> </p>
 
-<ul>
-    <li>
-        <%= link_to 'Edit', edit_article_path(@article) %>
-    </li>
-    <li>
-        <%= link_to 'Back', root_path %>
-    </li>
-    <li>
-        <%= link_to 'Delete', article_path(@article),
-        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-    </li>
-</ul>
+    <%= link_to 'Edit', edit_article_path(@article), class: 'btn btn-secondary mb-3' %>
+    <%= link_to 'Back', root_path, class: 'btn btn-secondary mb-3' %>
+    <%= link_to 'Delete', article_path(@article),
+    data: { turbo_method: :delete,
+    turbo_confirm: "Are you sure?" },
+    class: 'btn btn-danger mb-3' %>
+</article>
