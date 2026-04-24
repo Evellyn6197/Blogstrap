@@ -327,7 +327,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   bootstrap (~> 5.3)
-  brakeman
+  brakeman (~> 7.1)
   capybara
   debug
   importmap-rails
