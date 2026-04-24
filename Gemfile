@@ -63,3 +63,5 @@ gem "bootstrap", "~> 5.3"
 gem "sassc-rails"
 
 gem "simple_form", "~> 5.4"
+
+gem "kaminari", "~> 1.2"
