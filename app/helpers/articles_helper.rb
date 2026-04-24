@@ -1,6 +1,7 @@
 module ArticlesHelper
     def
         format_date(datetime)
-            datetime.strftime("%e/%m/%Y")
+            datetime.strftime("%B %e, %Y | %I:%M %p")
     end
 end
+    
