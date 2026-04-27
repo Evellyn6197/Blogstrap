@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: %i[ show edit update destroy ]
+    before_action :authenticate_user!, except: %i[ show index ]
   def index
     @highlights = Article.order(created_at: :desc).first(3)
     current_page = (params[:page] || 1).to_i
