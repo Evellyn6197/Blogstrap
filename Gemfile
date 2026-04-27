@@ -65,3 +65,7 @@ gem "sassc-rails"
 gem "simple_form", "~> 5.4"
 
 gem "kaminari", "~> 1.2"
+
+gem "devise", "~> 5.0"
+
+gem "letter_opener", "~> 1.10"
