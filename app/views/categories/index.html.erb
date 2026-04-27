@@ -1,16 +1,25 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Categories" %>
-
 <h1>Categories</h1>
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= link_to "New category", new_category_path, class: "btn btn-primary mb-3" %>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.name %></td>
+        <td>
+          <%= link_to 'Edit', edit_category_path(category) %>
+          <%= link_to 'Delete', category_path(category),
+          data: { turbo_method: :delete,
+          turbo_confirm: "Are you sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New category", new_category_path %>

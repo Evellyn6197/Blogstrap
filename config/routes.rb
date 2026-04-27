@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :categories
   root "articles#index"
+  resources :categories, except: [:show]
   resources :articles
 
   get "up" => "rails/health#show", as: :rails_health_check

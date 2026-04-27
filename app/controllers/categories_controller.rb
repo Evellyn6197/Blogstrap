@@ -1,13 +1,9 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :set_category, only: %i[ edit update destroy ]
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
-  end
-
-  # GET /categories/1 or /categories/1.json
-  def show
+    @categories = Category.sorted
   end
 
   # GET /categories/new
@@ -25,7 +21,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: "Category was successfully created." }
+        format.html { redirect_to categories_path, notice: "Category was successfully created." }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +34,7 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to @category, notice: "Category was successfully updated.", status: :see_other }
+        format.html { redirect_to categories_path, notice: "Category was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,11 +45,13 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1 or /categories/1.json
   def destroy
-    @category.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to categories_path, notice: "Category was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
+    if @category.destroy
+      respond_to do |format|
+        format.html { redirect_to categories_path, notice: "Category was successfully destroyed.", status: :see_other }
+        format.json { head :no_content }
+    end
+    else
+      redirect_to categories_path, alert: @category.errors.messages[:base][0], status: :see_other
     end
   end
 
