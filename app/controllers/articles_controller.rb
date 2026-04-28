@@ -11,8 +11,7 @@ class ArticlesController < ApplicationController
                         .page(current_page).per(2)
 end
 
-  def show
-  end
+  def show; end
 
   def new
       @article = current_user.articles.new
@@ -52,5 +51,6 @@ end
 
   def set_article
       @article = Article.find(params[:id])
+      authorize @article
   end
 end
