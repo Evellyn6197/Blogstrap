@@ -5,7 +5,7 @@
             <%= article.category.name %>
           </strong>
           <h3 class="mb-0"> <%= article.title %> </h3>
-          <div class="mb-1 text-muted"> <%= format_date(article.created_at) %> </div>
+          <div class="mb-1 text-muted"> <p><%= format_date(article.created_at) %> by <%= article.user.email%></p> </div>
           <p class="card-text mb-auto"> <%= truncate(article.body, length: 100) %> </p>
           <a class="lead mb-0"> <%= link_to 'Read more...', article, class: "stretched-link" %> </a>
         </div>
