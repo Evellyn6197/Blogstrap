@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "articles#index"
-  resources :categories, except: [:show]
+  resources :categories, except: [ :show ]
   resources :articles
 
   get "up" => "rails/health#show", as: :rails_health_check
