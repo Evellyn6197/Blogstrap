@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= link_to "New category", new_category_path, class: "btn btn-primary mb-3" if policy(:category).new? %>
+    <%= link_to "New category", new_category_path, class: "btn btn-success mb-3" if policy(:category).new? %>
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>

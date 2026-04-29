@@ -12,7 +12,7 @@
       </h3>
 
       <%= link_to 'New Article', new_article_path,
-        class: "btn btn-primary btn-lg mb-3" if user_signed_in? %>
+        class: "btn btn-success btn-lg mb-3" if user_signed_in? %>
 
       <%= render @articles %>
 
