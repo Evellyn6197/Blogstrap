@@ -89,6 +89,9 @@ GEM
     brakeman (7.1.1)
       racc
     builder (3.3.0)
+    bullet (8.1.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     capybara (3.40.0)
       addressable
       matrix
@@ -121,6 +124,8 @@ GEM
     ffi (1.17.4-x86_64-linux-gnu)
     globalid (1.3.0)
       activesupport (>= 6.1)
+    groupdate (6.5.1)
+      activesupport (>= 7)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.2.3)
@@ -328,6 +333,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
+    uniform_notifier (1.18.0)
     useragent (0.16.11)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -352,9 +358,11 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 5.3)
   brakeman (~> 7.1)
+  bullet (~> 8.1)
   capybara
   debug
   devise (~> 5.0)
+  groupdate (~> 6.5)
   importmap-rails
   jbuilder
   kaminari (~> 1.2)
