@@ -6,4 +6,5 @@ class Article < ApplicationRecord
     validates :body, presence: true, length: { minimum: 10 }
 
     scope :desc_order, -> { order(created_at: :desc) }
+    scope :filter_by_category, ->(category) { where(category_id: category.id) if category.present? }
 end
