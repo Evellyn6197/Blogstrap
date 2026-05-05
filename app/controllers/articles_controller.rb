@@ -3,13 +3,15 @@ class ArticlesController < ApplicationController
 
     before_action :set_article, only: %i[ show edit update destroy ]
     before_action :authenticate_user!, except: %i[ show index ]
+
   def index
     @categories = Category.sorted
-     category = @categories.select { |c| c.name == params[:category]}[0] if (params[:category]).present?
-    
+    category = @categories.select { |c| c.name == params[:category]}[0] if (params[:category]).present?
+
     @highlights = Article.joins([:category, :user])
                          .includes([:category, :user])
                          .filter_by_category(category)
+                         .filter_by_archive(params[:month_year])
                          .order(created_at: :desc).first(3)
                          
     highlights_ids = @highlights.pluck(:id)
@@ -18,8 +20,11 @@ class ArticlesController < ApplicationController
                        .includes([:category, :user])
                        .order(created_at: :desc)
                        .filter_by_category(category)
+                       .filter_by_archive(params[:month_year])
                        .where.not(id: highlights_ids)
-                       .page(current_page).per(2)
+                       .page(current_page).per(10)
+    
+    @archives = Article.group_by_month(:created_at, format: '%B %Y').count
 
 end
 
