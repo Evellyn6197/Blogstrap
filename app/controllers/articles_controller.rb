@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
 
     before_action :set_article, only: %i[ show edit update destroy ]
     before_action :authenticate_user!, except: %i[ show index ]
+    before_action :set_categories, only: %i[ new create edit update ]
 
   def index
     @categories = Category.sorted
@@ -62,12 +63,16 @@ end
 
   private
 
-  def article_params
-      params.require(:article).permit(:title, :body, :category_id)
-  end
+    def article_params
+        params.require(:article).permit(:title, :body, :category_id)
+    end
 
-  def set_article
-      @article = Article.find(params[:id])
-      authorize @article
-  end
+    def set_article
+        @article = Article.find(params[:id])
+        authorize @article
+    end
+
+    def set_categories
+        @categories  = Category.sorted
+    end
 end
