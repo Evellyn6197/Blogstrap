@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
     def create
         @article.comments.create(comment_params.to_h.merge!({ user_id: current_user.id }))
-        redirect_to article_path(@article)
+        redirect_to article_path(@article), notice: "Comment was successfully created."
     end
 
     private
