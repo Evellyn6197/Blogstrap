@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :categories, except: %i[ show ]
 
   resources :articles do
-    resources :comments, only: %i[ create ]
+    resources :comments, only: %i[ create destroy ]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
