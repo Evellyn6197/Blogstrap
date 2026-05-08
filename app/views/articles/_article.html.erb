@@ -7,13 +7,13 @@
     <p><%= truncate(article.body, length: 200) %></p>
 
     <p>
-        <%= link_to 'Read more...', article, class: " btn-link" %>
+        <%= link_to t('articles.continue_reading'), article, class: " btn-link" %>
     </p>
 
-    <%= link_to 'Edit', edit_article_path(article),
+    <%= link_to t('app.button.edit'), edit_article_path(article),
         class: "btn btn-primary mb-3" if policy(article).update? %>
 
-    <%= link_to 'Delete', article_path(article),
+    <%= link_to t('app.button.destroy'), article_path(article),
     data: { turbo_method: :delete,
     turbo_confirm: "Are you sure?" },
     class: "btn btn-danger mb-3" if policy(article).destroy? %>

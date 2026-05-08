@@ -1,5 +1,5 @@
 module ArticlesHelper
-    def format_date(datetime)
-        datetime.strftime("%B %e, %Y")
-    end
+  def format_date(datetime)
+		l(datetime, format: '%B %e, %Y').capitalize
+  end
 end

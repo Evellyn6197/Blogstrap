@@ -76,3 +76,5 @@ gem "rolify", "~> 6.0"
 gem "bullet", "~> 8.1"
 
 gem "groupdate", "~> 6.5"
+
+gem "devise-i18n", "~> 1.16"
