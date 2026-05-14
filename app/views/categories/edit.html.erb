@@ -1,6 +1,6 @@
 <% content_for :title, "Editing category" %>
 
-<h1>Editing category</h1>
+<h1><%= t('app.edit.title', model: Category.model_name.human) %></h1>
 
 <%= render "form", category: @category %>
 

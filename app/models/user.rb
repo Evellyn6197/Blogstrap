@@ -10,7 +10,7 @@ class User < ApplicationRecord
         :registerable,
         :recoverable,
         :rememberable,
-        :validatable
+        :validatable,
         :trackable
 
   validate :password_complexity

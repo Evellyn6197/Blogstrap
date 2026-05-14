@@ -13,7 +13,7 @@
 
     <%= link_to t('app.button.destroy'), article_path(@article),
     data: { turbo_method: :delete,
-    turbo_confirm: "Are you sure?" },
+    turbo_confirm: t('app.message.confirm_destroy') },
     class: 'btn btn-danger mb-3' if policy(@article).destroy? %>
 
     <h2 class="mt-3">
@@ -21,12 +21,12 @@
 		</h2>
     <%= render @article.comments %>
 
-    <h2><%= t('.add_comment') %></h2>
+    <h3><%= t('.add_comment') %></h3>
     <% if policy(:comment).create? %>
         <%= render 'comments/form' %>
     <% else %>
         <p>
-					<%= t '.login_create_comment' %>	
+		    <%= t '.login_create_comment' %>	
         </p>
         <%= link_to t('app.menu.sign_in'), new_user_session_path, class: "btn btn-sm btn-primary" %>
     <% end %>

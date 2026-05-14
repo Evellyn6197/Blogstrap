@@ -10,7 +10,7 @@
       <%= t'.subtitle' %>
     </h3>
 
-    <%= link_to t('.new_article'), new_article_path,
+    <%= link_to t('articles.new.title'), new_article_path,
         class: "btn btn-success btn-lg mb-3" if user_signed_in? %>
 
     <%= render @articles %>

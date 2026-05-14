@@ -5,7 +5,7 @@
     <p class="card-text"> <%= comment.body %> </p>
     <%= link_to t('app.button.destroy'), article_comment_path(@article, comment),
             data: { turbo_method: :delete,
-            turbo_confirm: "Are you sure?" },
+            turbo_confirm: t('app.message.confirm_destroy') },
             class: 'btn btn-danger mb-3' if policy(comment).destroy? %>
   </div>
 </div>

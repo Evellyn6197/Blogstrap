@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
                        .where.not(id: highlights_ids)
                        .page(current_page).per(10)
     
-    @archives = Article.group_by_month(:created_at, format: '%B %Y').count
+    @archives = Article.group_by_month(:created_at, format: '%m/%Y').count
 
 end
 
@@ -42,7 +42,7 @@ end
       @article = current_user.articles.new(article_params)
 
       if @article.save
-          redirect_to @article, notice: "Article was successfully created."
+          redirect_to @article, notice: t('.success')
       else
           render :new, status: :unprocessable_entity
       end
@@ -53,7 +53,7 @@ end
 
   def update
       if @article.update(article_params)
-          redirect_to @article, notice: "Article was successfully updated."
+          redirect_to @article, notice: t('.success')
       else
           render :edit, status: :unprocessable_entity
       end
@@ -61,7 +61,7 @@ end
 
   def destroy
       @article.destroy
-      redirect_to root_path, notice: "Article was successfully destroyed."
+      redirect_to root_path, notice: t('.success')
 end
 
   private
